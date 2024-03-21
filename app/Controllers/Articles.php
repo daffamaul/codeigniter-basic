@@ -19,7 +19,7 @@ class Articles extends BaseController
     {
         $data = [
             'title' => 'Articles',
-            'articles' => $this->articles->findAll(),
+            'articles' => $this->articles->getArticles(),
         ];
 
         return view('articles/index', $data);
@@ -27,15 +27,14 @@ class Articles extends BaseController
 
     public function detail($slug)
     {
-        if (!$slug) {
+        $data['slug'] = $this->articles->getArticles($slug);
+
+        if (!$data['slug']) {
             // This exception does not working
-            throw PageNotFoundException::forPageNotFound('Article doesn\'t exist.');
+            throw new PageNotFoundException('Article doesn\'t exist.');
         }
 
-        $data = [
-            'slug' => $this->articles->where('slug', $slug)->first(),
-            'title' => $this->articles->where('slug', $slug)->first()['title']
-        ];
+        $data['title'] = $data['slug']['title'];
 
         return view('articles/detail', $data);
     }
