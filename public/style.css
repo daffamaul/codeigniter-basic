@@ -287,3 +287,24 @@ footer {
 .entry .right-img {
   float: right;
 }
+
+nav[aria-label="Page navigation"] {
+  background-color: transparent;
+}
+
+nav[aria-label="Page navigation"] ul {
+  display: flex;
+  gap: 0.5rem;
+  margin-block: 0.7rem;
+}
+
+nav[aria-label="Page navigation"] ul li {
+  list-style-type: none;
+  text-align: center;
+}
+
+nav[aria-label="Page navigation"] ul li a {
+  background-color: #428bca;
+  padding: 5px;
+  width: 50px;
+}

@@ -41,9 +41,13 @@ class Articles extends BaseController
 
     public function admin_index()
     {
+        $qSearch = $this->request->getGet('q') ?? '';
+
         $data = [
             'title' => 'Admin Page',
-            'articles' => $this->articles->findAll()
+            'q' => $qSearch,
+            'articles' => $this->articles->like('title', $qSearch)->paginate(1),
+            'pager' => $this->articles->pager
         ];
 
         return view('articles/admin', $data);

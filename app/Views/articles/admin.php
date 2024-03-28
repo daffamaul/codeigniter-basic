@@ -1,4 +1,8 @@
 <?= $this->include('templates/admin_header') ?>
+<form action="" method="get">
+    <input type="text" name="q" value="<?= $q ?>">
+    <input type="button" value="Cari">
+</form>
 <table border="2">
     <thead>
         <tr>
@@ -30,4 +34,5 @@
         <?php endif ?>
     </tbody>
 </table>
+<?= $pager->links() ?>
 <?= $this->include('templates/admin_footer') ?>
